@@ -12,6 +12,16 @@ let ask = eleId("ask");
 let askError = eleId("askError");
 // Input Answer
 let answer = eleId("answer");
+let answer1 = eleId("answer1");
+// let answer2 = eleId("answer2");
+// let answer3 = eleId("answer3");
+// let answer4 = eleId("answer4");
+// let answer5 = eleId("answer5");
+// let answer6 = eleId("answer6");
+// let answer7 = eleId("answer7");
+// let answer8 = eleId("answer8");
+// let answer9 = eleId("answer9");
+// let answer10 = eleId("answer10");
 // Div Answer
 let answerError = eleId("answerError");
 
@@ -22,6 +32,16 @@ const createInfo = async (e) => {
     ask: form.ask.value,
     // Value Input Answer
     answer: form.answer.value,
+    answer1: form.answer1.value,
+    // answer2: form.answer2.value,
+    // answer3: form.answer3.value,
+    // answer4: form.answer4.value,
+    // answer5: form.answer5.value,
+    // answer6: form.answer6.value,
+    // answer7: form.answer7.value,
+    // answer8: form.answer8.value,
+    // answer9: form.answer9.value,
+    // answer10: form.answer10.value,
   };
   await fetch(`http://localhost:3000/info`, {
     method: "POST",
@@ -40,9 +60,8 @@ document.forms[0].onsubmit = function (e) {
   // => Global Var
   let messageAsk = ``;
   let messageAnswer = ``;
-  const minText = 5;
-  const maxText = 35;
-
+  //  And تستخدام فى تطابق جميع الشروط &&
+  //  Or تطابق شارط من الشروط ||
   // If Input Empty
   if (ask.value.trim() == ``) {
     messageAsk = `حقل الإدخال فارغ`;
@@ -50,39 +69,16 @@ document.forms[0].onsubmit = function (e) {
     askError.innerHTML = messageAsk;
     askError.style.border = "2px solid red";
   }
-  // If Value Less Than Min Text Value
-  else if (ask.value.length < minText) {
-    messageAsk = `يجب أن يكون اسم المستخدم اكبر من ${minText} حرف.`;
-    // messageAsk = `User Name must be More Thane ${minText}  characters.`;
-    askError.innerHTML = messageAsk;
-    ask.style.border = "2px solid red";
-    askError.style.cssText = "font-size: 13px;";
-  }
-  // If Value More Than Max Text Value
-  else if (ask.value.length > maxText) {
-    messageAsk = `يجب أن يكون اسم المستخدم اصغر من ${maxText} حرف.`;
-    // messageAsk = `Username must be between ${minText} and ${maxText} characters.`;
-    askError.innerHTML = messageAsk;
-    ask.style.border = "2px solid red";
-    askError.style.cssText = "font-size: 13px;";
-  }
   // Customer Name Is Valid
   // If Input Not Empty
   // If Value More Than Min Text Value
   // If Value Less Than Max Text Value
-  else if (
-    ask.value != `` ||
-    ask.value.length > minText ||
-    ask.value.length < maxText
-  ) {
+  else if (ask.value != ``) {
     messageAsk = `جيد`;
     // messageCustomerName = `Good`;
     askError.innerHTML = messageAsk;
     ask.style.border = "2px solid #080";
     askValid = true;
-    // customerNameIcon.classList.add("fa-check");
-    // customerNameIcon.classList.add("fa-check");
-    // customerNameIcon.classList.remove("fa-times");
   }
   // =>
   // If Value Is Default
@@ -130,7 +126,7 @@ const innerMain = eleId("inner-main");
 ?===============================================
 */
 
-const APIURL = "http://localhost:3000/info?_sort=customerName&_order=desc";
+const APIURL = "http://localhost:3000/info?_sort=ask&_order=desc";
 
 /*
 ?===============================================
@@ -213,8 +209,8 @@ function showItemsApi(Items) {
     //
     itemEl.innerHTML = `
     <div class="text">
-      <h3>${ask}</h3>
-      <p class="lead">${answer}</p>
+      <h3 class="ask">${ask}</h3>
+      <p class="lead answer">${answer}</p>
     </div>`;
     // Add The New Div To Parent
     innerMain.appendChild(itemEl);
