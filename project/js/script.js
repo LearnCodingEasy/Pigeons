@@ -40,7 +40,7 @@ document.forms[0].onsubmit = function (e) {
   // => Global Var
   let messageAsk = ``;
   let messageAnswer = ``;
-  const minText = 13;
+  const minText = 5;
   const maxText = 35;
 
   // If Input Empty
@@ -213,9 +213,8 @@ function showItemsApi(Items) {
     //
     itemEl.innerHTML = `
     <div class="text">
-      <h3>${id}</h3>
       <h3>${ask}</h3>
-      <h3>${answer}</h3>
+      <p class="lead">${answer}</p>
     </div>`;
     // Add The New Div To Parent
     innerMain.appendChild(itemEl);
